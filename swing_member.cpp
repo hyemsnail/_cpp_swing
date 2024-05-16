@@ -22,9 +22,12 @@ public:
 	}
 
 };
-bool Check(vector<Information>* member, string* name, string* p_number) { 
+bool Check(vector<Information>* member, string* name, string* p_number,int *index = nullptr) { 
 	for (size_t i = 0; i < member->size(); ++i)                             // 전체 벡터 동안 반복을 해야 한다고 해서 for
-	if (member->at(i).getname() == *name && member->at(i).getnumber() == *p_number) {  // 벡터 member가 i번째 요소의 이름과 전화번호가 일치하는지 확인
+	if (member->at(i).getname() == *name && member->at(i).getnumber() == *p_number) { // 벡터 member가 i번째 요소의 이름과 전화번호가 일치하는지 확인
+		if (index != nullptr) { // 특정한 경우를 만족하는 경우 인덱스를 전달
+			*index = i;
+		}
 		return true;                                                       
 	}                                                                     
 	return false;
@@ -54,7 +57,7 @@ int main() {
 			cout << "전화번호를 입력하세요:";
 			cin >> p_number;
 			if (Check(&member,&name,&p_number)) {
-				cout << "이미 등록된 정보입니다." << endl << endl;
+				cout <<endl<< "이미 등록된 정보입니다." << endl << endl;
 				break;
 			}
 			else {
@@ -72,6 +75,7 @@ int main() {
 			cin >> p_number;
 			cout << endl << endl;
 			if (Check(&member, &name, &p_number)) {
+				
 				cout << "로그인이 완료되었습니다." << endl << endl << "**** SWING " << name << "님을 응원합니다 *****" << endl << endl;
 				break;
 
@@ -88,18 +92,21 @@ int main() {
 			cout << "현재 회원 정보" << endl;
 			cout << "이름:";
 			cin >> name;
-			cout << "전화번호";
+			cout << "전화번호 :";
 			cin >> p_number;
-			cout << endl << endl;
+			cout << endl;
 
-			if (Check(&member, &name, &p_number)) {
-				
+			int index; // 인덱스 저장하는 변수
+			if (Check(&member, &name, &p_number,&index)) {
+				member.erase(member.begin() + index);
 				cout << "새로운 회원 정보" << endl;
 				cout << "이름 :";
 				cin >> name;
 				cout << "전화번호 : ";
 				cin >> p_number;
 				cout << endl << endl << "회원 정보 수정이 완료되었습니다";
+				member.push_back(Information(name, p_number));
+				cout << endl << endl;
 				break;
 			}
 			else {
@@ -113,7 +120,7 @@ int main() {
 			return 0;
 
 		default:
-			cout << "정확한 번호를 입력해주세요" << endl;
+			cout << "정확한 번호를 입력해주세요" << endl << endl;
 
 			break;
 		
@@ -127,3 +134,4 @@ int main() {
 	}
 
 }
+
