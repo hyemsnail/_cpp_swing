@@ -36,6 +36,8 @@ singleLinkedList<T>::~singleLinkedList() {
 template<class T>
 void singleLinkedList<T>::push(T element) {
 	Node<T>* newnode = new Node<T>;// 새로운 노드 생성, value값은 element로 초기화
+	newnode->data = element; // 새로운 노드에 데이터를 설정, element는 새로운 노드에 저장할 데이터
+	newnode->next = nullptr; // 새로운 노드의 다음 next포인터를 nullptr 로 초기화, 마지막 노드에 추가하는 것을 의미
 	if (tail == nullptr) { // 리스트가 아예 비어있는 경우
 		head = tail = newnode; //head와 tail을 새로운 노드로 설정
 
