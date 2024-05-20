@@ -6,6 +6,7 @@ class Node {
 public:
 	T data; // T타입의 데이터를 저장하는 멤버 변수 data 
 	Node<T>* next = nullptr; // 다음 노드를 가리키는 포인터 next 정의 , 마지막 노드의 포인터는 nullptr 
+	
 
 };
 template<class T>
@@ -34,7 +35,7 @@ singleLinkedList<T>::~singleLinkedList() {
 }
 template<class T>
 void singleLinkedList<T>::push(T element) {
-	Node<T>* newnode = new Node<T>(element);// 새로운 노드 생성, value값은 element로 초기화
+	Node<T>* newnode = new Node<T>;// 새로운 노드 생성, value값은 element로 초기화
 	if (tail == nullptr) { // 리스트가 아예 비어있는 경우
 		head = tail = newnode; //head와 tail을 새로운 노드로 설정
 
@@ -50,9 +51,13 @@ template<class T>
 void singleLinkedList<T>::show() {
 	Node<T>* now_number = head;
 	while (now_number != nullptr) {
-		cout << now_number->data;
+		cout << now_number-> data;
+		if (now_number->next != nullptr) {
+			cout << "->";
+		}
 		now_number = now_number->next;
 	}
+
 }
 
 int main() {
