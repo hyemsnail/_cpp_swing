@@ -24,12 +24,12 @@ int main() {
     numbers.push_back(3);
     numbers.push_back(9);
 
-    cout << "기존 숫자들: ";
+    cout << "기존 벡터 숫자들: ";
     printVector(numbers);
 
     // 2. STL sort를 사용하여 벡터 정렬
     sort(numbers.begin(), numbers.end());
-    cout << "정렬된 숫자들: ";
+    cout << "정렬된 벡터 숫자들: ";
     printVector(numbers);
 
     // 3. 특정 값 검색 (find)
@@ -49,11 +49,11 @@ int main() {
     fruits.push_back("grape");
     fruits.push_back("orange");
 
-    cout << "\n기존 과일들: ";
+    cout << "\n기존 벡터 과일들: ";
     printVector(fruits);
 
     sort(fruits.begin(), fruits.end());
-    cout << "정렬된 과일들: ";
+    cout << "정렬된 벡터 과일들: ";
     printVector(fruits);
 
     // 5. 특정 문자열 검색
