@@ -3,7 +3,7 @@ using namespace std;
 
 class square { // 정사각형 클래스, square
 private:
-    int side ; // 변
+    int side; // 변
 
 public:
     //기본 생성자
@@ -28,22 +28,24 @@ public:
 
 class triangle {
 private:
-    int side; // 정삼각형 한 변의 길이
+    int side; // 삼각형 한 변의 길이
+    int height; //삼각형 높이
 public:
 
     //생성자
-    triangle(int s) {
+    triangle(int s, int h) {
         side = s;
-        cout << "***정삼각형 계산기 접속***" << endl << endl;
+        height = h;
+        cout << "***삼각형 계산기 접속***" << endl << endl;
     }
     //소멸자
     ~triangle() {
-        cout << "정삼각형 계산기 종료..." << endl << endl;
+        cout << "삼각형 계산기 종료..." << endl << endl;
 
     }
     //넓이
     double area() {
-        return side * side * 1 / 2;
+        return side * height * 1 / 2;
     }
 };
 
@@ -111,7 +113,7 @@ int main() {
         int height;
         cout << "원하는 계산을 선택하세요" << endl;
         cout << "1. 정사각형 넓이 계산" << endl;
-        cout << "2. 정삼각형 넓이 계산" << endl;
+        cout << "2. 삼각형 넓이 계산" << endl;
         cout << "3. 정육면체 부피 계산" << endl;
         cout << "4. 정육면체 겉넓이 계산" << endl;
         cout << "5. 정사각뿔 부피 계산" << endl;
@@ -132,13 +134,15 @@ int main() {
                 cout << "정사각형의 넓이:" << c1.area() << endl << endl;
             } // 이거 중괄호로 안 감싸면 '초기화가 생략되었다'는 오류가 뜬다. 
             break;
-        case 2://정삼각형 넓이
+        case 2://삼각형 넓이
             cout << "변의 길이 입력:";
             cin >> side;
             cout << endl;
+            cout << "높이 입력:";
+            cin >> height;
             {
-                triangle c2(side); // c2 객체 생성, 생성자 호출 , 한 변 side를 넣어 초기화
-                cout << "정삼각형의 넓이:" << c2.area() << endl << endl;
+                triangle c2(side, height); // c2 객체 생성, 생성자 호출 , 한 변 side를 넣어 초기화
+                cout << "삼각형의 넓이:" << c2.area() << endl << endl;
             }
             break;
         case 3://정육면체 부피
